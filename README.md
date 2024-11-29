@@ -69,6 +69,14 @@ pip install onnxruntime-gpu==1.17.0 --index-url=https://pkgs.dev.azure.com/onnxr
 ```
 
 ### Download weights
+#### Automatically
+Navigate to the StableAnimator directory and enter
+```
+python download_checkpoints.py
+```
+The script will automatically download and stage the checkpoints and relevant configs, organizing them in the fashio described below in the manual section.
+
+#### Manually
 If you experience connection issues with Hugging Face, you can utilize the mirror endpoint by setting the environment variable: `export HF_ENDPOINT=https://hf-mirror.com`.
 Please download weights manually as follows:
 ```
