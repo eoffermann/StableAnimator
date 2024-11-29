@@ -118,4 +118,4 @@ iface = gr.Interface(
     description="Run inference with StableAnimator via a user-friendly Gradio interface."
 )
 
-iface.launch()
+iface.launch(inbrowser=True)
