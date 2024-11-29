@@ -28,7 +28,8 @@ def run_inference(
     frames_overlap, 
     decode_chunk_size, 
     noise_aug_strength,
-    seed
+    seed,
+    fps
 ):
     # Initialize models
     seed_everything(seed)
@@ -75,7 +76,7 @@ def run_inference(
         tile_overlap=frames_overlap,
         decode_chunk_size=decode_chunk_size,
         motion_bucket_id=127.,
-        fps=7,
+        fps=fps,
         min_guidance_scale=guidance_scale,
         max_guidance_scale=guidance_scale,
         noise_aug_strength=noise_aug_strength,
@@ -87,7 +88,7 @@ def run_inference(
     # Save outputs
     os.makedirs(output_dir, exist_ok=True)
     save_frames_as_png(output_frames, output_dir)
-    export_to_gif(output_frames, os.path.join(output_dir, "animation_video.mp4"), fps=8)
+    export_to_gif(output_frames, os.path.join(output_dir, "animation_video.mp4"), fps=fps)
     return os.path.join(output_dir, "animation_video.mp4")
 
 # Gradio Interface
@@ -110,6 +111,7 @@ iface = gr.Interface(
         gr.Number(label="Decode Chunk Size", value=4),
         gr.Number(label="Noise Augmentation Strength", value=0.02),
         gr.Number(label="Seed", value=23123134),
+        gr.Number(label="Fps", value=30),
     ],
     outputs=gr.Textbox(label="Output Video Path"),
     title="StableAnimator Gradio Interface",
