@@ -68,6 +68,15 @@ conda install xformers -c xformers -y
 pip install onnxruntime-gpu==1.17.0 --index-url=https://pkgs.dev.azure.com/onnxruntime/onnxruntime/_packaging/onnxruntime-cuda-12/pypi/simple
 ```
 
+#### Windows with Python 3.10.11 and cuda11.8
+Some libraries are a bit different to get up and running on Windows (triton for example) and it's nice to have a set
+of baked requirements. Here are conda instructions for Windows 11:
+```
+conda create -n StableAnimator
+conda activate StableAnimator
+pip install -r requirements_win.txt
+```
+
 ### Download weights
 #### Automatically
 Navigate to the StableAnimator directory and enter
